@@ -5,6 +5,7 @@
 # hash: 3835E0DDAE5C86060874A43A035D3EAA86E976D89B664194F71A8362D243E935
 
 start=$(date +'%s')
+hashcat -I
 
 rm outfile.txt 2> /dev/null
 COUNTER=1
@@ -13,7 +14,7 @@ COUNTER=1
 #  printf "\nTrying brute force pattern ${COUNTER} : ${pattern}\n"
 #  # add arg -D1 to run on CPU instead of GPU
 #  if [ ! -f outfile.txt ]; then
-#    hashcat ./hashedIPs.txt --potfile-path=pot.file -O -debug-mode --outfile-format=2 -o outfile.txt -m 1400 -a 3 $pattern
+#    hashcat ./hashedIPs.txt --potfile-path=pot.file --outfile-format=2 -o outfile.txt -m 1400 -a 3 $pattern
 #  fi
 #  COUNTER=$[$COUNTER +1]
 #done <brute-force-patterns.txt
