@@ -6,20 +6,11 @@
 #hashcat ./hashedIPs.txt --potfile-path=pot.file -d 2 --outfile-format=2 -o outfile.txt -m 1400 -a 3 ?d?d?d.?d?d?d.?d?d.?d?d?d
 hashcat -I
 
-for word in $(cat brute-force-patterns.txt); do echo $word; done
+for word in $(cat patterns.txt); do echo $word; done
 
 start=$(date +'%s')
 rm outfile.txt 2> /dev/null
-COUNTER=0
-for line in $(cat brute-force-patterns.txt);
-do
-  COUNTER=$[$COUNTER +1]
-  printf "\nTrying brute force pattern ${COUNTER} : ${line}\n"
-  # add arg -D1 to run on CPU (d1) instead of GPU (d2)
-  if [ ! -f outfile.txt ]; then
-    hashcat ./hashedIPs.txt -O --outfile-format=2 -o outfile.txt -m 1400 -a 3 $line
-  fi
-done
+hashcat ./hashedIPs.txt ./patterns.hcmask -O --outfile-format=2 -o outfile.txt -m 1400 -a 3
 
 if [ -f outfile.txt ]; then
 	echo "Result:"
