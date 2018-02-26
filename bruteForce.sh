@@ -17,7 +17,7 @@ do
   printf "\nTrying brute force pattern ${COUNTER} : ${line}\n"
   # add arg -D1 to run on CPU (d1) instead of GPU (d2)
   if [ ! -f outfile.txt ]; then
-    hashcat ./hashedIPs.txt --outfile-format=2 -o outfile.txt -m 1400 -a 3 $line
+    hashcat ./hashedIPs.txt -O --outfile-format=2 -o outfile.txt -m 1400 -a 3 $line
   fi
 done
 
