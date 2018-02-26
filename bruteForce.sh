@@ -10,7 +10,7 @@ for word in $(cat patterns.txt); do echo $word; done
 
 start=$(date +'%s')
 rm outfile.txt 2> /dev/null
-hashcat ./hashedIPs.txt ./patterns.hcmask -O --outfile-format=2 -o outfile.txt -m 1400 -a 3
+hashcat -O --outfile-format=2 -o outfile.txt -m 1400 -a 3 ./hashedIPs.txt ./patterns.hcmask
 
 if [ -f outfile.txt ]; then
 	echo "Result:"
